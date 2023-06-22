@@ -1,6 +1,6 @@
 {
     "asset" : {
-        "copyright" : "Shak",
+        "copyright" : "Iuri Cordeiro",
         "generator" : "Khronos glTF Blender I/O v3.4.49",
         "version" : "2.0"
     },
@@ -20,17 +20,17 @@
             "rotation" : [
                 -0.049233946949243546,
                 -0.00326342205516994,
-                -0.06685785204172134,
-                0.9965416789054871
+                -0.06685784459114075,
+                0.9965417385101318
             ],
             "scale" : [
-                4.5499467849731445,
+                4.549947261810303,
                 4.011737823486328,
-                4.554084777832031
+                4.554084300994873
             ],
             "translation" : [
-                0.8817888498306274,
-                2.3596630096435547,
+                0.8817887902259827,
+                2.3596649169921875,
                 0.04310715198516846
             ]
         },
@@ -46,8 +46,8 @@
                 0.07176323980093002
             ],
             "translation" : [
-                -0.018015116453170776,
-                0.6260025501251221,
+                -0.018015118315815926,
+                0.6260026097297668,
                 0
             ]
         },
@@ -57,10 +57,37 @@
             ],
             "mesh" : 2,
             "name" : "Sphere",
+            "rotation" : [
+                0,
+                0.019998665899038315,
+                0,
+                0.9998000264167786
+            ],
             "translation" : [
                 0,
                 0.8785364627838135,
                 0
+            ]
+        }
+    ],
+    "animations" : [
+        {
+            "channels" : [
+                {
+                    "sampler" : 0,
+                    "target" : {
+                        "node" : 2,
+                        "path" : "rotation"
+                    }
+                }
+            ],
+            "name" : "SphereAction",
+            "samplers" : [
+                {
+                    "input" : 12,
+                    "interpolation" : "LINEAR",
+                    "output" : 13
+                }
             ]
         }
     ],
@@ -254,6 +281,24 @@
             "componentType" : 5123,
             "count" : 3258,
             "type" : "SCALAR"
+        },
+        {
+            "bufferView" : 12,
+            "componentType" : 5126,
+            "count" : 90,
+            "max" : [
+                3
+            ],
+            "min" : [
+                0.03333333333333333
+            ],
+            "type" : "SCALAR"
+        },
+        {
+            "bufferView" : 13,
+            "componentType" : 5126,
+            "count" : 90,
+            "type" : "VEC4"
         }
     ],
     "bufferViews" : [
@@ -328,11 +373,21 @@
             "byteLength" : 6516,
             "byteOffset" : 22888,
             "target" : 34963
+        },
+        {
+            "buffer" : 0,
+            "byteLength" : 360,
+            "byteOffset" : 29404
+        },
+        {
+            "buffer" : 0,
+            "byteLength" : 1440,
+            "byteOffset" : 29764
         }
     ],
     "buffers" : [
         {
-            "byteLength" : 29404,
+            "byteLength" : 31204,
             "uri" : "Ma\u00e7\u00e3.bin"
         }
     ]
