@@ -20,12 +20,17 @@ document.addEventListener("DOMContentLoaded", () => {
         // const plane = new THREE.Mesh(geometry, material)
 
         const apple = await loadGLTF("./assets/maçã/Maçã.gltf")
+        const pepper = await loadGLTF("./assets/pimenta/Pimenta.gltf")
 
         apple.scene.scale.set(0.05, 0.05, 0.05)
         apple.scene.position.set(-0.44, 0.09, 0)
         
+        pepper.scene.scale.set(0.4, 0.4, 0.4)
+        pepper.scene.position.set(-0.01, 0.48, 0)
+
         const anchor = mindarThree.addAnchor(0)
         anchor.group.add(apple.scene)
+        anchor.group.add(pepper.scene)
 
         await mindarThree.start()
 
