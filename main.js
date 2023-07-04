@@ -15,9 +15,7 @@ document.addEventListener("DOMContentLoaded", () => {
         const light = new THREE.HemisphereLight(0xffffff, 0xbbbbff, 1)
         scene.add(light)
 
-        // const geometry = new THREE.PlaneGeometry(1, 1)
-        // const material = new THREE.MeshBasicMaterial({color: 'blue', transparent: true, opacity: 0.5})
-        // const plane = new THREE.Mesh(geometry, material)
+        // ===================== GLTF LOADER ======================
 
         const apple = await loadGLTF("./assets/maçã/Maçã.gltf")
         const pepper = await loadGLTF("./assets/pimenta/Pimenta.gltf")
@@ -37,12 +35,16 @@ document.addEventListener("DOMContentLoaded", () => {
         pumpkin.scene.position.set(0.404, 0.182, 0)
         pumpkin.scene.rotation.set(0.6, 0.2, 0)
 
+        // ===================== ANCHOR ======================
+
         const chefAnchor = mindarThree.addAnchor(0)
         
         chefAnchor.group.add(apple.scene)
         chefAnchor.group.add(pepper.scene)
         chefAnchor.group.add(carrot.scene)
         chefAnchor.group.add(pumpkin.scene)
+
+        // ===================== ANIMATION ======================
         
         const appleMixer = new THREE.AnimationMixer(apple.scene)
         const pepperMixer = new THREE.AnimationMixer(pepper.scene)
@@ -64,21 +66,18 @@ document.addEventListener("DOMContentLoaded", () => {
             appleMixer.clipAction(clip).play(); 
         }); */
 
-        // const clock = new THREE.Clock()
+        const clock = new THREE.Clock()
 
         await mindarThree.start()
 
         renderer.setAnimationLoop(() => {
 
-            // const delta = clock.getDelta()
+            const delta = clock.getDelta()
 
-            // apple.scene.rotation.set(0, apple.scene.rotation.y + delta, 0) 
-            // pepper.scene.rotation.set(0, apple.scene.rotation.y + delta, 0) 
-            // carrot.scene.rotation.set(0, carrot.scene.rotation.y + delta, 0) 
-
-            // appleMixer.update(delta)
-            // pepperMixer.update(delta)
-            // carrotMixer.update(delta)
+            appleMixer.update(delta)
+            pepperMixer.update(delta)
+            carrotMixer.update(delta)
+            pumpkinMixer.update(delta)
 
             renderer.render(scene, camera)
         })
