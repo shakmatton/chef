@@ -19,14 +19,18 @@ document.addEventListener("DOMContentLoaded", () => {
 
         const apple = await loadGLTF("./assets/maçã/Maçã.gltf")
         const pepper = await loadGLTF("./assets/pimenta/Pimenta.gltf")
+        const bellPepper = await loadGLTF("./assets/pimentão/Pimentão.gltf")
         const carrot = await loadGLTF("./assets/cenoura/Cenoura.gltf")
-        const pumpkin = await loadGLTF("./assets/abóbora/Abóbora.gltf")
+        const pumpkin = await loadGLTF("./assets/abóbora/Abóbora.gltf")        
 
         apple.scene.scale.set(0.05, 0.05, 0.05)
         apple.scene.position.set(-0.44, 0.09, 0)
         
         pepper.scene.scale.set(0.4, 0.4, 0.4)
         pepper.scene.position.set(-0.01, 0.48, 0)
+
+        bellPepper.scene.scale.set(0.26, 0.26, 0.26)
+        bellPepper.scene.position.set(0.177, 0.43, 0)
 
         carrot.scene.scale.set(0.275, 0.275, 0.275)
         carrot.scene.position.set(-0.285, 0.425, 0)
@@ -41,6 +45,7 @@ document.addEventListener("DOMContentLoaded", () => {
         
         chefAnchor.group.add(apple.scene)
         chefAnchor.group.add(pepper.scene)
+        chefAnchor.group.add(bellPepper.scene)
         chefAnchor.group.add(carrot.scene)
         chefAnchor.group.add(pumpkin.scene)
 
@@ -48,16 +53,19 @@ document.addEventListener("DOMContentLoaded", () => {
         
         const appleMixer = new THREE.AnimationMixer(apple.scene)
         const pepperMixer = new THREE.AnimationMixer(pepper.scene)
+        const bellPepperMixer = new THREE.AnimationMixer(bellPepper.scene)
         const carrotMixer = new THREE.AnimationMixer(carrot.scene)
         const pumpkinMixer = new THREE.AnimationMixer(pumpkin.scene)
 
         const appleAction = appleMixer.clipAction(apple.animations[0])        
         const pepperAction = pepperMixer.clipAction(pepper.animations[0])
+        const bellPepperAction = bellPepperMixer.clipAction(bellPepper.animations[0])        
         const carrotAction = carrotMixer.clipAction(carrot.animations[0])
         const pumpkinAction = pumpkinMixer.clipAction(pumpkin.animations[0])
         
         appleAction.play()
         pepperAction.play()
+        bellPepperAction.play()
         carrotAction.play()
         pumpkinAction.play()
 
@@ -76,6 +84,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
             appleMixer.update(delta)
             pepperMixer.update(delta)
+            bellPepperMixer.update(delta)
             carrotMixer.update(delta)
             pumpkinMixer.update(delta)
 
