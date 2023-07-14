@@ -22,15 +22,18 @@ document.addEventListener("DOMContentLoaded", () => {
         const bellPepper = await loadGLTF("./assets/pimentão/Pimentão.gltf")
         const carrot = await loadGLTF("./assets/cenoura/Cenoura.gltf")
         const pumpkin = await loadGLTF("./assets/abóbora/Abóbora.gltf")        
+        const broccoli = await loadGLTF("./assets/brócolis/Brócolis.gltf")   
 
         apple.scene.scale.set(0.05, 0.05, 0.05)
         apple.scene.position.set(-0.44, 0.09, 0)
-        
+        apple.scene.rotation.set(0.4, 0, 0)
+
         pepper.scene.scale.set(0.4, 0.4, 0.4)
         pepper.scene.position.set(-0.01, 0.48, 0)
-
+        
         bellPepper.scene.scale.set(0.26, 0.26, 0.26)
         bellPepper.scene.position.set(0.177, 0.43, 0)
+        bellPepper.scene.rotation.set(0.7, 0, 0)
 
         carrot.scene.scale.set(0.275, 0.275, 0.275)
         carrot.scene.position.set(-0.285, 0.425, 0)
@@ -38,6 +41,10 @@ document.addEventListener("DOMContentLoaded", () => {
         pumpkin.scene.scale.set(0.25, 0.25, 0.25)
         pumpkin.scene.position.set(0.404, 0.182, 0)
         pumpkin.scene.rotation.set(0.6, 0.2, 0)
+
+        broccoli.scene.scale.set(0.26, 0.26, 0.26)
+        broccoli.scene.position.set(-0.38, 0.26, 0)
+        broccoli.scene.rotation.set(0, 0, 0.7)
 
         // ===================== ANCHOR ======================
 
@@ -48,6 +55,7 @@ document.addEventListener("DOMContentLoaded", () => {
         chefAnchor.group.add(bellPepper.scene)
         chefAnchor.group.add(carrot.scene)
         chefAnchor.group.add(pumpkin.scene)
+        chefAnchor.group.add(broccoli.scene)
 
         // ===================== ANIMATION ======================
         
@@ -56,18 +64,21 @@ document.addEventListener("DOMContentLoaded", () => {
         const bellPepperMixer = new THREE.AnimationMixer(bellPepper.scene)
         const carrotMixer = new THREE.AnimationMixer(carrot.scene)
         const pumpkinMixer = new THREE.AnimationMixer(pumpkin.scene)
+        const broccoliMixer = new THREE.AnimationMixer(broccoli.scene)
 
         const appleAction = appleMixer.clipAction(apple.animations[0])        
         const pepperAction = pepperMixer.clipAction(pepper.animations[0])
         const bellPepperAction = bellPepperMixer.clipAction(bellPepper.animations[0])        
         const carrotAction = carrotMixer.clipAction(carrot.animations[0])
         const pumpkinAction = pumpkinMixer.clipAction(pumpkin.animations[0])
+        const broccoliAction = broccoliMixer.clipAction(broccoli.animations[0])
         
         appleAction.play()
         pepperAction.play()
         bellPepperAction.play()
         carrotAction.play()
         pumpkinAction.play()
+        broccoliAction.play()
 
        /* const appleMixer = new THREE.AnimationMixer(apple.scene)
         apple.animations.forEach((clip) => {
@@ -87,6 +98,7 @@ document.addEventListener("DOMContentLoaded", () => {
             bellPepperMixer.update(delta)
             carrotMixer.update(delta)
             pumpkinMixer.update(delta)
+            broccoliMixer.update(delta)
 
             renderer.render(scene, camera)
         })
