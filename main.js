@@ -23,6 +23,7 @@ document.addEventListener("DOMContentLoaded", () => {
         const carrot = await loadGLTF("./assets/cenoura/Cenoura.gltf")
         const pumpkin = await loadGLTF("./assets/abóbora/Abóbora.gltf")        
         const broccoli = await loadGLTF("./assets/brócolis/Brócolis.gltf")   
+        const onion = await loadGLTF("./assets/cebola/Cebola.gltf")
 
         apple.scene.scale.set(0.05, 0.05, 0.05)
         apple.scene.position.set(-0.44, 0.09, 0)
@@ -46,6 +47,10 @@ document.addEventListener("DOMContentLoaded", () => {
         broccoli.scene.position.set(-0.38, 0.26, 0)
         broccoli.scene.rotation.set(0, 0, 0.7)
 
+        onion.scene.scale.set(0.25, 0.25, 0.25)
+        onion.scene.position.set(0.303, 0.302, 0)
+        onion.scene.rotation.set(0, 0, -0.3)
+
         // ===================== ANCHOR ======================
 
         const chefAnchor = mindarThree.addAnchor(0)
@@ -56,6 +61,7 @@ document.addEventListener("DOMContentLoaded", () => {
         chefAnchor.group.add(carrot.scene)
         chefAnchor.group.add(pumpkin.scene)
         chefAnchor.group.add(broccoli.scene)
+        chefAnchor.group.add(onion.scene)
 
         // ===================== ANIMATION ======================
         
@@ -65,6 +71,7 @@ document.addEventListener("DOMContentLoaded", () => {
         const carrotMixer = new THREE.AnimationMixer(carrot.scene)
         const pumpkinMixer = new THREE.AnimationMixer(pumpkin.scene)
         const broccoliMixer = new THREE.AnimationMixer(broccoli.scene)
+        const onionMixer = new THREE.AnimationMixer(onion.scene)
 
         const appleAction = appleMixer.clipAction(apple.animations[0])        
         const pepperAction = pepperMixer.clipAction(pepper.animations[0])
@@ -72,6 +79,7 @@ document.addEventListener("DOMContentLoaded", () => {
         const carrotAction = carrotMixer.clipAction(carrot.animations[0])
         const pumpkinAction = pumpkinMixer.clipAction(pumpkin.animations[0])
         const broccoliAction = broccoliMixer.clipAction(broccoli.animations[0])
+        const onionAction = onionMixer.clipAction(onion.animations[0])
         
         appleAction.play()
         pepperAction.play()
@@ -79,6 +87,7 @@ document.addEventListener("DOMContentLoaded", () => {
         carrotAction.play()
         pumpkinAction.play()
         broccoliAction.play()
+        onionAction.play()
 
        /* const appleMixer = new THREE.AnimationMixer(apple.scene)
         apple.animations.forEach((clip) => {
@@ -99,6 +108,7 @@ document.addEventListener("DOMContentLoaded", () => {
             carrotMixer.update(delta)
             pumpkinMixer.update(delta)
             broccoliMixer.update(delta)
+            onionMixer.update(delta)
 
             renderer.render(scene, camera)
         })
